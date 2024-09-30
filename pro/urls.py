@@ -16,10 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import lab5.views
+import pages.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
     path('book/', include('bookmodule.urls')),
     path('user/', include('usermodule.urls')),
+    path('pages/', pages.views.index),
+    path('index2/<int:val1>/', pages.views.index2),
+    path('index/<int:val1>/', pages.views.index),
+    path('<int:bookId>/', pages.views.viewbook, name='view_book'),
+    path('lab/', include('lab5.urls')),
+    
+    
 ]
